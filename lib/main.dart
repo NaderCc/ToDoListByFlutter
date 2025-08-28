@@ -59,6 +59,43 @@ class MyApp extends StatelessWidget {
 
                         ],
                       ),
+                    ),
+                    Container(
+                      decoration:BoxDecoration(
+                        color: Colors.lightBlueAccent,
+                        border: Border.all(width: 2,color: Colors.black87),
+                      ),
+                      padding: EdgeInsets.all(10),
+                      width: 1000,
+                      child: Column(
+
+                        children: [
+                        Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Icon(Icons.access_alarm,color: Colors.green[500],),
+                          Icon(Icons.local_fire_department,color: Colors.green[500],),
+                          Icon(Icons.fastfood_rounded,color: Colors.green[500]),
+
+                        ]),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text("PREP:", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),),
+                              Text("COOK:", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),),
+                              Text("FEED:", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text("25m", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 14),),
+                              Text("1h", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 14),),
+                              Text("4-6", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 14),),
+                            ],
+                          )
+                        ],
+                      ),
                     )
                   ],
 
