@@ -12,11 +12,15 @@ class MyApp extends StatefulWidget
 class _MyAppState extends State<MyApp>
 {
   bool addMission = false;
+  bool? isDone=false;
+  bool? isDone2=false;
+  bool? isDone3=false;
+  bool? isDone4=false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text("Example 1"),),
+        appBar: AppBar(title: const Text("ToDoList"),),
 
         body :
 
@@ -43,13 +47,18 @@ class _MyAppState extends State<MyApp>
                   DataColumn(label: Text("Status")),
                 ],
 
-                rows: const [
+                rows: [
                   DataRow(
                     cells: [
                       DataCell(Text("1")),
                       DataCell(Text("AddWatermelon")),
                       DataCell(Text("DrinkIt")),
-                      DataCell(Text("Pending")),
+                      DataCell(Checkbox(value:isDone2 , onChanged: (val)
+                      {
+                        setState(() {
+                          isDone2=val;
+                        });
+                      })),
                     ],
                   ),
                   DataRow(
@@ -57,7 +66,13 @@ class _MyAppState extends State<MyApp>
                       DataCell(Text("2")),
                       DataCell(Text("Orange")),
                       DataCell(Text("Eat It")),
-                      DataCell(Text("Done")),
+                      DataCell(Checkbox(value:isDone3 , onChanged: (val)
+                      {
+                       setState(() {
+                         isDone3=val;
+                       });
+
+                      })),
                     ],
                   ),
                 ],
@@ -71,7 +86,7 @@ class _MyAppState extends State<MyApp>
 
               });
 
-            },title: Text("To add Another mission switch On"),),
+            },title: Text("To add Another mission switch On",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),),
             if(addMission)
                 Container(
                   padding: EdgeInsets.all(10),
@@ -114,12 +129,38 @@ class _MyAppState extends State<MyApp>
                         )),
                       Container(
                       margin: EdgeInsets.all(10),
-                        child: CheckboxListTile(value: value, onChanged: onChanged),
+                      decoration: BoxDecoration(
+                          color: Colors.white, // الخلفية بيضاء
+                          border: Border.all(
+                          color: Colors.black, // الحدود سوداء
+                          width: 2,            // سمك الحدود
+                      )),
+                        child: CheckboxListTile(value: isDone, onChanged: (val)
+                        {
+                          setState(() {
+                            isDone=val;
+                          });
+                        },title: Text("Status of ur mission",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
                       ),
 
                   ],
               ),),
+              Container(
+                margin: EdgeInsets.all(10),
+                width: 20,
+                height: 50,
+                decoration:BoxDecoration(
 
+                  border: Border.all(color: Colors.indigoAccent,width: 2,),
+                  color: Colors.black,
+                ),
+              child:MaterialButton(onPressed: ()
+              {
+
+              },
+                minWidth: 50,
+              child:Text("AddMission",style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold,color: Colors.white)),
+              ),)
 
 
 
