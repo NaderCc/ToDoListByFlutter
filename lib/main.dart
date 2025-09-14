@@ -3,109 +3,200 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
 }
+class MyApp extends StatefulWidget
+{
+  const MyApp({super.key});
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp>
+{
+  bool addMission = false;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text("Example 1"),),
+
+        body :
+
+
+        ListView(
+          children: [
+            Container(
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.all(20),
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.indigoAccent,
+              ),
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal
+                  ,child: DataTable(
+
+                columns: const [
+                  DataColumn(label: Text("Id")),
+                  DataColumn(label: Text("Name")),
+                  DataColumn(label: Text("Description")),
+                  DataColumn(label: Text("Status")),
+                ],
+
+                rows: const [
+                  DataRow(
+                    cells: [
+                      DataCell(Text("1")),
+                      DataCell(Text("AddWatermelon")),
+                      DataCell(Text("DrinkIt")),
+                      DataCell(Text("Pending")),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text("2")),
+                      DataCell(Text("Orange")),
+                      DataCell(Text("Eat It")),
+                      DataCell(Text("Done")),
+                    ],
+                  ),
+                ],
+              )
+              ),
+            ),
+            SwitchListTile(value: addMission, onChanged: (val)
+            {
+              setState(() {
+                addMission=val;
+
+              });
+
+            },title: Text("To add Another mission switch On"),),
+            if(addMission)
+                Container(
+                  padding: EdgeInsets.all(10),
+                margin: EdgeInsets.all(10),
+
+                decoration:BoxDecoration(
+                    border: Border.all(color: Colors.cyan,width: 2,),
+                    color: Colors.tealAccent,
+                  ),
+                 // color: Colors.tealAccent,
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child:TextFormField(
+                            decoration: InputDecoration(
+
+                              border: OutlineInputBorder() ,
+                              fillColor: Colors.white,
+                              filled: true,
+                              hintText: "  Enter the name of the mission",
+                              labelText: "MissionName",
+                              labelStyle: TextStyle(fontSize: 25,),
+                              prefix: Icon(Icons.task),
+                          ),
+                        ),),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child:TextFormField(
+                          decoration: InputDecoration(
+
+                            border: OutlineInputBorder() ,
+                            fillColor: Colors.white,
+                            filled: true,
+                            hintText: "  Enter the Description of the mission",
+                            labelText: "MissionDescription",
+                            labelStyle: TextStyle(fontSize: 25,),
+                            prefix: Icon(Icons.task),
+                          ),
+                        )),
+                      Container(
+                      margin: EdgeInsets.all(10),
+                        child: CheckboxListTile(value: value, onChanged: onChanged),
+                      ),
+
+                  ],
+              ),),
+
+
+
+
+
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+/*
 class MyApp extends StatelessWidget {
-
+bool addMission = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
           appBar: AppBar(title: const Text("Example 1"),),
-            body : Container
-              (
-                padding: EdgeInsets.all(10),
-                child: Column(spacing: 10,
-                  children: [
-                    Container(
-                      decoration:BoxDecoration(
-                    color: Colors.lightBlueAccent,
-                    border: Border.all(width: 2,color: Colors.black87),
-                ),
-                      padding: EdgeInsets.all(10),
-                      width: 1000,
-                      child: Text("Nader Magdy Mostafa",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24, color: Colors.grey[500]),textAlign: TextAlign.center,),
-                    ),
-                    Container(
-                      decoration:BoxDecoration(
-                        color: Colors.lightBlueAccent,
-                        border: Border.all(width: 2,color: Colors.black87),
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                      width: 1000,
-                      child: Text("This is my first App to learn how can i use the widgets In correct way i hope allah help me to finish that and find good work for my self"
-                        ,style: TextStyle(fontSize: 20, color: Colors.grey[500]),textAlign: TextAlign.center,),
-                    ),
-                    Container(
-                      decoration:BoxDecoration(
-                        color: Colors.lightBlueAccent,
-                        border: Border.all(width: 2,color: Colors.black87),
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                      width: 1000,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                            ],
 
-                          ),
-                          Text("170 reviews", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),),
+            body :
 
-                        ],
-                      ),
-                    ),
-                    Container(
-                      decoration:BoxDecoration(
-                        color: Colors.lightBlueAccent,
-                        border: Border.all(width: 2,color: Colors.black87),
-                      ),
-                      padding: EdgeInsets.all(10),
-                      width: 1000,
-                      child: Column(
 
-                        children: [
-                        Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Icon(Icons.access_alarm,color: Colors.green[500],),
-                          Icon(Icons.local_fire_department,color: Colors.green[500],),
-                          Icon(Icons.fastfood_rounded,color: Colors.green[500]),
+            ListView(
+              children: [
+                Container(
+                  alignment: Alignment.topCenter,
+                 padding: EdgeInsets.all(20),
+                 margin: EdgeInsets.all(20),
+                 width: 200,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.indigoAccent,
+                  ),
+                   child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal
+                   ,child: DataTable(
 
-                        ]),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text("PREP:", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),),
-                              Text("COOK:", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),),
-                              Text("FEED:", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text("25m", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 14),),
-                              Text("1h", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 14),),
-                              Text("4-6", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 14),),
-                            ],
-                          )
-                        ],
-                      ),
+                      columns: const [
+                        DataColumn(label: Text("Id")),
+                        DataColumn(label: Text("Name")),
+                        DataColumn(label: Text("Description")),
+                        DataColumn(label: Text("Status")),
+                      ],
+
+                     rows: const [
+                       DataRow(
+                         cells: [
+                           DataCell(Text("1")),
+                           DataCell(Text("AddWatermelon")),
+                           DataCell(Text("DrinkIt")),
+                           DataCell(Text("Pending")),
+                         ],
+                       ),
+                       DataRow(
+                         cells: [
+                           DataCell(Text("2")),
+                           DataCell(Text("Orange")),
+                           DataCell(Text("Eat It")),
+                           DataCell(Text("Done")),
+                         ],
+                       ),
+                     ],
                     )
-                  ],
+                   ),
+                ),
+                SwitchListTile(value: addMission, onChanged: (val)
+                {
 
-                )
-
-
-            )
-
-
-        ),
+                  addMission=val;
+                },title: Text("To add Another mission switch On"),),
+              ],
+            ),
+         ),
     );
-
   }}
+*/
